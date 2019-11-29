@@ -1,16 +1,14 @@
 package com.example.coderswag.Controller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.coderswag.Adapters.CategoryAdapter
 import com.example.coderswag.Adapters.CategoryRecycleAdapter
 import com.example.coderswag.Model.Category
 import com.example.coderswag.R
 import com.example.coderswag.Services.DataServices
+import com.example.coderswag.Utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,8 +48,14 @@ class MainActivity : AppCompatActivity() {
         }*/
 */
 
-        ///RECYCLE
-        myAdapter = CategoryRecycleAdapter(this,DataServices.categories) // for recycler view
+        ///RECYCLE without onclck lambda
+        //myAdapter = CategoryRecycleAdapter(this,DataServices.categories) // for recycler view
+        myAdapter = CategoryRecycleAdapter(this,DataServices.categories) {category: Category ->// println(it.title) // category: Category -> println(category.title)
+            val productIntent = Intent(this, ProductsActivity::class.java) // current context and where im going
+            productIntent.putExtra(EXTRA_CATEGORY, category.title) // it.title
+            startActivity(productIntent) // to go to the new activity
+
+        }
 
         // now tell the list view who it needs to listen too
         // to set the adapter
@@ -62,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         categoryListView.layoutManager = layoutManager
         categoryListView.setHasFixedSize(true)
+
+
+
 
     }
 }

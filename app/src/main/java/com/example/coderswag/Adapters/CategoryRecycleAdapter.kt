@@ -13,11 +13,12 @@ import kotlinx.android.synthetic.main.category_list_item.view.*
 
 // recyclerviews need a <view holder?>
                                                 // we need the categories to show <- needs list type
-class CategoryRecycleAdapter(val context:Context, val categories:List<Category>) : RecyclerView.Adapter<CategoryRecycleAdapter.RvHolder>() {
+                                                                                // item click receives a category and returns nothing
+class CategoryRecycleAdapter(val context:Context, val categories:List<Category>, val itemClick: (Category)->Unit) : RecyclerView.Adapter<CategoryRecycleAdapter.RvHolder>() {
 
     //holder view class needed to hold the view and enable reuse of views (holds a refrence to the views)
     // also resposible for binding the views
-    inner class RvHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { // so we create one <- view holder
+    inner class RvHolder(itemView: View, val itemClick: (Category) -> Unit) : RecyclerView.ViewHolder(itemView) { // so we create one <- view holder
 
         // in charge of binding? so lets bind these values (we need image and name here)
         val categoryImage = itemView.findViewById<ImageView>(R.id.categoryImageImgVw) //grab imgVw ref
@@ -29,6 +30,8 @@ class CategoryRecycleAdapter(val context:Context, val categories:List<Category>)
             val resourceId = context.resources.getIdentifier(category.image, "drawable",context.packageName)
             categoryImage.setImageResource(resourceId)
             categoryName.text = category.title
+
+            itemView.setOnClickListener { itemClick(category) } // set onclick for each item?
         }
     }
 
@@ -46,7 +49,7 @@ class CategoryRecycleAdapter(val context:Context, val categories:List<Category>)
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.category_list_item, parent, false
         )
-        return RvHolder(view)
+        return RvHolder(view, itemClick)
 
     }
 
