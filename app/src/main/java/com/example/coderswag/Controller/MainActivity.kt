@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         ///RECYCLE without onclck lambda
         //myAdapter = CategoryRecycleAdapter(this,DataServices.categories) // for recycler view
+        //WITH LAMBDA ONCLICK
         myAdapter = CategoryRecycleAdapter(this,DataServices.categories) {category: Category ->// println(it.title) // category: Category -> println(category.title)
             val productIntent = Intent(this, ProductsActivity::class.java) // current context and where im going
             productIntent.putExtra(EXTRA_CATEGORY, category.title) // it.title

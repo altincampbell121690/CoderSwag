@@ -22,23 +22,34 @@ object DataServices {
     )
 
     val hats = listOf(
-        Product("Devslopes Graphic Beanie", "$18", "hat01"),
-        Product("Devslopes Hat Black", "$20", "hat02"),
-        Product("Devslopes Hat White", "$18", "hat03"),
-        Product("Devslopes Hat Snapback", "$22", "hat04")
+        Product("Devslopes Graphic Beanie", "$18", "hat1"),
+        Product("Devslopes Hat Black", "$20", "hat2"),
+        Product("Devslopes Hat White", "$18", "hat3"),
+        Product("Devslopes Hat Snapback", "$22", "hat4")
     )
 
     val hoodies = listOf(
-        Product("Devslopes Hoodie Gray", "$28", "hoodie01"),
-        Product("Devslopes Hoodie Red", "$32", "hoodie02"),
-        Product("Devslopes Gray Hoodie", "$18", "hoodie03"),
-        Product("Devslopes Black Hoodie", "$32", "hoodie04")
+        Product("Devslopes Hoodie Gray", "$28", "hoodie1"),
+        Product("Devslopes Hoodie Red", "$32", "hoodie2"),
+        Product("Devslopes Gray Hoodie", "$18", "hoodie3"),
+        Product("Devslopes Black Hoodie", "$32", "hoodie4")
     )
-    val shirt = listOf(
-        Product("Devslopes Shirt Black", "$18", "Shirt01"),
-        Product("Devslopes Badge Light Gray", "$20", "Shirt02"),
-        Product("Devslopes Logo Shirt Red", "$22", "Shirt03"),
-        Product("Devslopes Hustle", "$22", "Shirt04"),
-        Product("Kickflip Studios", "$18", "shirt05")
+    val shirts = listOf(
+        Product("Devslopes Shirt Black", "$18", "Shirt1"),
+        Product("Devslopes Badge Light Gray", "$20", "Shirt2"),
+        Product("Devslopes Logo Shirt Red", "$22", "Shirt3"),
+        Product("Devslopes Hustle", "$22", "Shirt4"),
+        Product("Kickflip Studios", "$18", "shirt5")
     )
+
+    val digitalGoods = listOf<Product>() // empty array for digital goods
+
+    fun getProducts(category: String):List<Product> {
+        return when (category) {
+            "SHIRTS" -> return shirts
+            "HATS" -> return hats
+            "HOODIES" -> return hoodies
+            else -> digitalGoods
+        }
+    }
 }
