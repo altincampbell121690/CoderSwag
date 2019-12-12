@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="onClickProduct">
+    android:layout_height="match_parent"
+    tools:context=".Controller.ProductInfoActivity">
 
     <ImageView
-        android:id="@+id/productImage"
+        android:id="@+id/productInfoImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -20,17 +20,18 @@
         app:srcCompat="@drawable/hat1" />
 
     <TextView
-        android:id="@+id/productNameTxtVw"
+        android:id="@+id/productInfoTitleTxtVw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/productImage"
-        app:layout_constraintStart_toStartOf="@id/productImage"
-        app:layout_constraintTop_toBottomOf="@id/productImage"
+        app:layout_constraintEnd_toEndOf="@id/productInfoImage"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@id/productInfoImage"
+        app:layout_constraintTop_toBottomOf="@id/productInfoImage"
         tools:text="Beanie" />
 
     <TextView
@@ -42,8 +43,22 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/productNameTxtVw"
-        app:layout_constraintStart_toStartOf="@id/productNameTxtVw"
-        app:layout_constraintTop_toBottomOf="@id/productNameTxtVw"
+        app:layout_constraintEnd_toEndOf="@id/productInfoTitleTxtVw"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="@id/productInfoTitleTxtVw"
+        app:layout_constraintTop_toBottomOf="@id/productInfoTitleTxtVw"
+        app:layout_constraintVertical_bias="0.04"
         tools:text="$18" />
+
+    <TextView
+        android:id="@+id/productInfoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productPriceTxtVw"
+        app:layout_constraintVertical_bias="0.728"
+        tools:text="Available In Black/White\nCrew Neck\nShort Sleeve\nScreen Print\n100% Cotton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

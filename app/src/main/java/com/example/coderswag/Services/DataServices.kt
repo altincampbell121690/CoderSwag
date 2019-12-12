@@ -71,6 +71,15 @@ object DataServices {
     val digitalGoods = listOf<Product>() // empty array for digital goods
 
     //expressive switch statement
+    /**
+     * <h1>getProducts</h1>
+     * The getProducts function retruns a product list
+     * based on the category string passed into it.
+     * <p>
+     * the switch statement returns the list.
+     * @param category
+     * @return List
+     */
     fun getProducts(category: String):List<Product> {
         return when (category) {
             "SHIRTS" -> return shirts

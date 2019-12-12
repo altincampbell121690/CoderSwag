@@ -26,8 +26,17 @@ class CategoryRecycleAdapter(val context:Context, val categories:List<Category>,
 
 
         // function to pass in the category to bind it to to the ui elements
+        /**
+         * <h1>bindCategory</h1>
+         * bind Category sets each items image and name
+         * based on the category passed into it.
+         * <b>
+         *     Sets the onclick listener to a lambda
+         * @param category
+         * @param context
+         */
         fun bindCategory(category:Category, context: Context){ // need context to find resource based on the name
-            val resourceId = context.resources.getIdentifier(category.image, "drawable",context.packageName)
+            val resourceId = context.resources.getIdentifier(category.image, "drawable",context.packageName) //?
             categoryImage.setImageResource(resourceId)
             categoryName.text = category.title
 
